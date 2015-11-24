@@ -1,0 +1,50 @@
+        <!DOCTYPE html> 
+        <html> 
+        <head> 
+          <title>Connection</title> 
+          <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+          <link rel="stylesheet" href="jquery.mobile-1.4.3.min.css" />
+          <script src="jquery-1.11.1.min.js"></script>
+          <script src="jquery.mobile-1.4.3.min.js"></script>
+
+          <script type="text/javascript" charset="utf-8">
+           document.addEventListener("deviceready", onDeviceReady, false);
+           function onDeviceReady() {
+            setInterval(function(){
+              checkConnection()
+            }, 3000);
+          }
+          function checkConnection() {
+            var networkState = navigator.connection.type;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            document.getElementById("state").innerHTML = states[networkState];
+          }
+          </script>
+
+        </head> 
+        <body> 
+
+          <div data-role="page" id="con" data-theme="b">
+             <div data-role="header">  
+            <h1>Conexao Teste</h1>
+          </div>
+          <div data-role="content">
+            <p>Estado atual: <span id="state">LOADING...</span></p>            
+          </div>
+          <div data-role="footer" data-position="fixed">
+            <p>Este exemplo demonstra a conexao atual do dispositivo</p>
+
+          </div>
+        </div>
+      </body>
+      </html>
